@@ -18,7 +18,9 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     let talker = AVSpeechSynthesizer()
     let engine = AVAudioEngine()
     let recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-
+    var language: String?
+    @IBOutlet weak var textfield: UITextField!
+    
     @IBOutlet weak var recordButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +31,10 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
 //        requestSpeechAuthoriztion()
         requestMicrophoneAuthorization()
         transcribeText.text = ""
+        
     }
     
     private func speechToTextFromURLFile(){
-        
-        print("inside speechToTextFromURLFile")
 
         let f = Bundle.main.url(forResource: "example", withExtension: "aif")!
         let req = SFSpeechURLRecognitionRequest(url: f)
@@ -42,8 +43,6 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
             return
         }
         
-        print("inside speechToTextFromURLFile request : \(req)")
-
         rec.recognitionTask(with: req){ result, err in
             if let result = result {
                 let trans = result.bestTranscription
@@ -60,12 +59,10 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     }
     
     @IBAction func buttonPressed(_ sender: Any) {
-        print("000 --- buttonPressed")
         transcibeLiveSpeech()
     }
     
     @IBAction func buttonRelease(_ sender: Any) {
-        print("003 --- buttonRelease")
         self.engine.stop()
         self.engine.inputNode!.removeTap(onBus: 0)
         self.recognitionRequest.endAudio()
@@ -90,13 +87,13 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     
     @IBOutlet weak var transcribeText: UILabel!
     private func transcibeLiveSpeech(){
-        
-        print("001 --- transcibeLiveSpeech")
-
         // can substitute locale later to whatever the user's keyboard is
-        guard let rec = SFSpeechRecognizer(locale: Locale(identifier: "en-US")) else {
+        language = self.getCurrentLanguage()
+        
+        guard let rec = SFSpeechRecognizer(locale: Locale(identifier: language!)) else {
             return
         }
+        
         self.recognitionRequest.shouldReportPartialResults = true // to return befure audio recording is finish
         
         let input = self.engine.inputNode!
@@ -123,6 +120,19 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         }
     }
     
+    func getCurrentLanguage() -> String {
+        
+        let detectedLang = (textfield.textInputMode?.primaryLanguage)!
+        
+        switch detectedLang {
+            case "zh-Hans":
+                return "zh-CN"
+            case "zh-Hant":
+                return "zh-TW"
+        default:
+            return detectedLang
+        }
+    }
     private func requestSpeechAuthoriztion(){
         SFSpeechRecognizer.requestAuthorization { authStatus in
             /* The callback may not be called on the main thread. Add an
