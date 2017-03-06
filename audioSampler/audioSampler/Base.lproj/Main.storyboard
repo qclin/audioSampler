@@ -44,11 +44,30 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mqd-7d-mbL">
+                                <rect key="frame" x="67" y="409" width="240" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">農曆新年假期結束，內地不少民眾紛紛離鄉別井，返回工作單位繼續工作。對於擔心兒女「吃不飽，穿不暖」的父母而言，盡量給兒女的行李塞滿食物，已變成一種習慣。內地有媒體發起「離家前，爸爸媽
+
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3S2-so-oBF">
+                                <rect key="frame" x="73" y="545" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Read"/>
+                                <connections>
+                                    <action selector="readBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t7i-qP-yfL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
                         <outlet property="recordButton" destination="k8R-Tb-cKa" id="3Rd-JD-pXl"/>
+                        <outlet property="textView" destination="Mqd-7d-mbL" id="3Pv-we-Hq7"/>
                         <outlet property="textfield" destination="WhJ-MA-gwW" id="Fch-6w-ecG"/>
                         <outlet property="transcribeText" destination="0dH-MT-SL4" id="qli-0y-G1D"/>
                     </connections>
