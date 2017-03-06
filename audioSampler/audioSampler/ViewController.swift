@@ -16,7 +16,9 @@ import Speech
 
 class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
     let talker = AVSpeechSynthesizer()
-    
+    let engine = AVAudioEngine()
+    let recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+
     @IBOutlet weak var recordButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +26,13 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
 
 //        playSystemSound()
 //        utterSomething("Good morning")
-        requestSpeechAuthoriztion()
-        // Do any additional setup after loading the view, typically from a nib.
-        speechToTextFromURLFile()
+//        requestSpeechAuthoriztion()
+        requestMicrophoneAuthorization()
+        transcribeText.text = ""
     }
     
     private func speechToTextFromURLFile(){
         
-        if authStatus == SFSpeechRecognizerAuthorizationStatus.authorized {
         print("inside speechToTextFromURLFile")
 
         let f = Bundle.main.url(forResource: "example", withExtension: "aif")!
@@ -57,6 +58,71 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
             
         }
     }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        print("000 --- buttonPressed")
+        transcibeLiveSpeech()
+    }
+    
+    @IBAction func buttonRelease(_ sender: Any) {
+        print("003 --- buttonRelease")
+        self.engine.stop()
+        self.engine.inputNode!.removeTap(onBus: 0)
+        self.recognitionRequest.endAudio()
+    }
+    
+    private func requestMicrophoneAuthorization(){
+        let session: AVAudioSession = AVAudioSession.sharedInstance()
+        try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        if(session.responds(to: #selector(AVAudioSession.requestRecordPermission(_:)))) {
+            AVAudioSession.sharedInstance().requestRecordPermission({(granted: Bool) -> Void in
+                if granted {
+                    print("grant")
+
+                } else{
+                    print("not granted")
+                }
+            
+            
+            })
+        }
+    }
+    
+    @IBOutlet weak var transcribeText: UILabel!
+    private func transcibeLiveSpeech(){
+        
+        print("001 --- transcibeLiveSpeech")
+
+        // can substitute locale later to whatever the user's keyboard is
+        guard let rec = SFSpeechRecognizer(locale: Locale(identifier: "en-US")) else {
+            return
+        }
+        self.recognitionRequest.shouldReportPartialResults = true // to return befure audio recording is finish
+        
+        let input = self.engine.inputNode!
+        input.installTap(onBus: 0, bufferSize: 4096, format: input.outputFormat(forBus: 0)){ buffer, time in
+            self.recognitionRequest.append(buffer)
+        }
+        self.engine.prepare()
+        try! self.engine.start()
+        // NB: provide the user with feedack here ! 
+        
+        rec.recognitionTask(with: self.recognitionRequest){ result, err in
+            if let result = result {
+                let trans = result.bestTranscription
+                let s = trans.formattedString
+                print(s)
+                self.transcribeText.text = s
+                self.transcribeText.sizeToFit()
+                if result.isFinal {
+                    print("finished!")
+                }
+            }else{
+                print(err!)
+            }
+        }
+    }
+    
     private func requestSpeechAuthoriztion(){
         SFSpeechRecognizer.requestAuthorization { authStatus in
             /* The callback may not be called on the main thread. Add an
@@ -66,6 +132,7 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
                 switch authStatus {
                 case .authorized:
                     self.recordButton.isEnabled = true
+                    self.speechToTextFromURLFile()
                 case .denied:
                     self.recordButton.isEnabled = false
                     self.recordButton.setTitle("User denied access to speech recognition", for: .disabled)
