@@ -12,17 +12,25 @@ import UIKit
 import AVFoundation
 import AudioToolbox
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
+    let talker = AVSpeechSynthesizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        playSystemSound()
-        
+        self.talker.delegate = self
 
+        playSystemSound()
+        utterSomething("Good morning")
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
-    
+    private func utterSomething(_ text: String){
+        let utter = AVSpeechUtterance(string: text)
+        let v = AVSpeechSynthesisVoice(language: "en-US")
+        utter.voice = v
+        self.talker.speak(utter)
+    }
     
     private func playSystemSound(){
         let sndurl = Bundle.main.url(forResource: "example", withExtension: "aif")!
