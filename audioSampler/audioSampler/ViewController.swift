@@ -14,18 +14,20 @@ import AudioToolbox
 import Speech
 
 
-class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
+class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextFieldDelegate{
     let talker = AVSpeechSynthesizer()
     let engine = AVAudioEngine()
     let recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
     var language: String?
     @IBOutlet weak var textfield: UITextField!
+    @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var recordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.talker.delegate = self
-
+        self.textfield.delegate = self
 //        playSystemSound()
 //        utterSomething("Good morning")
 //        requestSpeechAuthoriztion()
@@ -34,6 +36,36 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
+    
+    //ask alex to read
+    @IBAction func readBtnPressed(_ sender: Any) {
+//        guard let voice = AVSpeechSynthesisVoice(identifier:AVSpeechSynthesisVoiceIdentifierAlex) else{
+//            print("Alex is not available")
+//            return
+//        }
+        
+        let detectedLang = (textfield.textInputMode?.primaryLanguage)!
+        guard let voice = AVSpeechSynthesisVoice(language: detectedLang) else{
+            print("Voice is not available in this locale \(detectedLang))")
+            return
+        }
+        print("language = \(detectedLang)")
+        print("id = \(voice.identifier)")
+        print("quality = \(voice.quality)")
+        print("name = \(voice.name)")
+        
+        let toSay = AVSpeechUtterance(string: textView.text)
+        toSay.voice = voice
+        
+        print("")
+        let alex = AVSpeechSynthesizer()
+        alex.delegate = self
+        alex.speak(toSay)
+    }
     private func speechToTextFromURLFile(){
 
         let f = Bundle.main.url(forResource: "example", withExtension: "aif")!
