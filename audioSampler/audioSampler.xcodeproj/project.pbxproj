@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F92E1E78233A003F2772 /* RecordClipViewController.swift */; };
 		F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */; };
 		F5AE2E7B1E6D6DC50072FC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */; };
 		F5AE2E7E1E6D6DC50072FC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F543F92E1E78233A003F2772 /* RecordClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordClipViewController.swift; sourceTree = "<group>"; };
 		F5AE2E751E6D6DC50072FC23 /* audioSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */,
 				F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */,
 				F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */,
+				F543F92E1E78233A003F2772 /* RecordClipViewController.swift */,
 				F5AE2E821E6D6DC50072FC23 /* Assets.xcassets */,
 				F5AE2E841E6D6DC50072FC23 /* LaunchScreen.storyboard */,
 				F5AE2E871E6D6DC50072FC23 /* Info.plist */,
@@ -292,6 +295,7 @@
 				F5AE2E7B1E6D6DC50072FC23 /* ViewController.swift in Sources */,
 				F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */,
 				F5AE2E811E6D6DC50072FC23 /* audioSampler.xcdatamodeld in Sources */,
+				F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +544,7 @@
 				F5AE2EA21E6D6DC50072FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5AE2EA31E6D6DC50072FC23 /* Build configuration list for PBXNativeTarget "audioSamplerTests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +553,7 @@
 				F5AE2EA51E6D6DC50072FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5AE2EA61E6D6DC50072FC23 /* Build configuration list for PBXNativeTarget "audioSamplerUITests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +562,7 @@
 				F5AE2EA81E6D6DC50072FC23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

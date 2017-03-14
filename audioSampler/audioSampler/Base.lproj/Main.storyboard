@@ -62,6 +62,14 @@
                                     <action selector="readBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="t7i-qP-yfL"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBu-P0-LSf">
+                                <rect key="frame" x="245" y="579" width="78" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Next action"/>
+                                <connections>
+                                    <segue destination="Trb-gx-y52" kind="show" id="8LY-hS-hLb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -74,6 +82,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Record Clip View Controller-->
+        <scene sceneID="MS9-jd-azP">
+            <objects>
+                <viewController id="Trb-gx-y52" customClass="RecordClipViewController" customModule="audioSampler" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Cc-us-NTl"/>
+                        <viewControllerLayoutGuide type="bottom" id="tdx-iZ-kQf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="X3G-xl-eFe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t6p-07-N9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1036" y="139"/>
         </scene>
     </scenes>
 </document>
