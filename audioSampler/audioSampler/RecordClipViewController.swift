@@ -18,6 +18,10 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
+
+    // used from SubmitRecordingViewController
+    static var isDirty = true
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +43,7 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
             recordingSession.requestRecordPermission() { [unowned self] allowed in
                 DispatchQueue.main.async {
                     if allowed {
-                        self.loadRecordingUI()
+//                        self.loadRecordingUI()
                         print("000 ")
                     } else {
                         // failed to record !
@@ -61,26 +65,26 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
         
         view.addSubview(recordButton)
     }
-    
-    func loadPlayButton(){
-        playButton = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 64))
-        playButton.translatesAutoresizingMaskIntoConstraints = false
-        playButton.setTitle("Tap to Play", for: .normal)
-        playButton.isHidden = true
-        playButton.alpha = 0
-        playButton.setTitleColor(.blue, for: .normal)
-        playButton.backgroundColor = UIColor.black
-        playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
-        playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
-        view.addSubview(playButton)
-    }
-    
+//
+//    func loadPlayButton(){
+//        playButton = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 64))
+//        playButton.translatesAutoresizingMaskIntoConstraints = false
+//        playButton.setTitle("Tap to Play", for: .normal)
+//        playButton.isHidden = true
+//        playButton.alpha = 0
+//        playButton.setTitleColor(.blue, for: .normal)
+//        playButton.backgroundColor = UIColor.black
+//        playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+//        playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
+//        view.addSubview(playButton)
+//    }
+//    
     
     
     // decide where to save the audio, configure the recording settings, start recording
     
     func startRecording() {
-        let audioFilename = getDocumentsDirectory().appendingPathComponent("recording.m4a")
+        let audioURL = RecordClipViewController.getRecordingURL()
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -90,7 +94,7 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
         ]
         
         do {
-            audioRecorder = try AVAudioRecorder(url: audioFilename, settings: settings)
+            audioRecorder = try AVAudioRecorder(url: audioURL, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.record()
             
@@ -122,15 +126,16 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     }
     
     // helper method
-    func getDocumentsDirectory() -> URL {
+    class func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentsDirectory = paths[0]
         return documentsDirectory
     }
     
-    func getRecordingURL() -> URL {
-        return getDocumentsDirectory().appendingPathComponent("recording.m4a")
+    class func getRecordingURL() -> URL {
+        return getDocumentsDirectory().appendingPathComponent("whistle.m4a")
     }
+
     
     @IBAction func recordTapped(_ sender: Any) {
         if audioRecorder == nil {
@@ -148,7 +153,7 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     }
 
     @IBAction func playTapped(_ sender: Any) {
-        let audioURL = self.getRecordingURL()
+        let audioURL = RecordClipViewController.getRecordingURL()
         
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioURL)

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F92E1E78233A003F2772 /* RecordClipViewController.swift */; };
+		F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */; };
+		F543F9351E78588F003F2772 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F543F9341E78588F003F2772 /* CloudKit.framework */; };
 		F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */; };
 		F5AE2E7B1E6D6DC50072FC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */; };
 		F5AE2E7E1E6D6DC50072FC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */; };
@@ -40,6 +42,9 @@
 
 /* Begin PBXFileReference section */
 		F543F92E1E78233A003F2772 /* RecordClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordClipViewController.swift; sourceTree = "<group>"; };
+		F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitRecordingViewController.swift; sourceTree = "<group>"; };
+		F543F9321E785734003F2772 /* audioSampler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = audioSampler.entitlements; sourceTree = "<group>"; };
+		F543F9341E78588F003F2772 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		F5AE2E751E6D6DC50072FC23 /* audioSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F543F9351E78588F003F2772 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F543F9331E78588F003F2772 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F543F9341E78588F003F2772 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5AE2E6C1E6D6DC40072FC23 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +103,7 @@
 				F5AE2E8F1E6D6DC50072FC23 /* audioSamplerTests */,
 				F5AE2E9A1E6D6DC50072FC23 /* audioSamplerUITests */,
 				F5AE2E761E6D6DC50072FC23 /* Products */,
+				F543F9331E78588F003F2772 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,10 +120,12 @@
 		F5AE2E771E6D6DC50072FC23 /* audioSampler */ = {
 			isa = PBXGroup;
 			children = (
+				F543F9321E785734003F2772 /* audioSampler.entitlements */,
 				F5AE2EA91E6D702D0072FC23 /* Resources */,
 				F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */,
 				F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */,
 				F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */,
+				F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */,
 				F543F92E1E78233A003F2772 /* RecordClipViewController.swift */,
 				F5AE2E821E6D6DC50072FC23 /* Assets.xcassets */,
 				F5AE2E841E6D6DC50072FC23 /* LaunchScreen.storyboard */,
@@ -222,6 +239,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9E72MPGUQ7;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					F5AE2E8B1E6D6DC50072FC23 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -295,6 +320,7 @@
 				F5AE2E7B1E6D6DC50072FC23 /* ViewController.swift in Sources */,
 				F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */,
 				F5AE2E811E6D6DC50072FC23 /* audioSampler.xcdatamodeld in Sources */,
+				F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */,
 				F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = audioSampler/audioSampler.entitlements;
 				DEVELOPMENT_TEAM = 9E72MPGUQ7;
 				INFOPLIST_FILE = audioSampler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -458,6 +485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = audioSampler/audioSampler.entitlements;
 				DEVELOPMENT_TEAM = 9E72MPGUQ7;
 				INFOPLIST_FILE = audioSampler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
