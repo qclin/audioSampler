@@ -95,8 +95,30 @@
                     <view key="view" contentMode="scaleToFill" id="X3G-xl-eFe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0to-ge-dEi">
+                                <rect key="frame" x="149" y="380" width="76" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tap to Play"/>
+                                <connections>
+                                    <action selector="playTapped:" destination="Trb-gx-y52" eventType="touchUpInside" id="pqb-7e-PdV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDB-YM-bIJ">
+                                <rect key="frame" x="139" y="212" width="96" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Tap to Record"/>
+                                <connections>
+                                    <action selector="recordTapped:" destination="Trb-gx-y52" eventType="touchUpInside" id="fig-AZ-JAI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="0to-ge-dEi" id="Kd3-b1-mcs"/>
+                        <outlet property="recordButton" destination="YDB-YM-bIJ" id="2Cc-fP-aB8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6p-07-N9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

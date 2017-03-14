@@ -9,18 +9,19 @@
 import UIKit
 import AVFoundation
 
-class RecordClipViewController: UIViewController, AVAudioRecorderDelegate {
+class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate{
     
-    var recordButton: UIButton!
+    
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var playButton: UIButton!
+    
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
-    var playButton: UIButton!
-    
+    var audioPlayer: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        loadRecordingUI()
+
         // Do any additional setup after loading the view.
     }
 
@@ -52,7 +53,6 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate {
     }
     // generate record button only after permission granted
     func loadRecordingUI(){
-        print("001 --loadRecordingUI ")
         recordButton = UIButton(frame: CGRect(x: 100, y: 400, width: 200, height: 64))
         recordButton.setTitle("Tap to Record", for: .normal)
         recordButton.setTitleColor(.blue, for: .normal)
@@ -63,8 +63,19 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func loadPlayButton(){
-        playButton = UIButton()
+        playButton = UIButton(frame: CGRect(x: 100, y: 100, width: 200, height: 64))
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.setTitle("Tap to Play", for: .normal)
+        playButton.isHidden = true
+        playButton.alpha = 0
+        playButton.setTitleColor(.blue, for: .normal)
+        playButton.backgroundColor = UIColor.black
+        playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
+        view.addSubview(playButton)
     }
+    
+    
     
     // decide where to save the audio, configure the recording settings, start recording
     
@@ -100,6 +111,14 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate {
             recordButton.setTitle("Tap to Re-record", for: .normal)
             // recording failed
         }
+        
+        if playButton.isHidden {
+            UIView.animate(withDuration: 0.35) { [unowned self] in
+                self.playButton.isHidden = false
+                self.playButton.alpha = 1
+                print("here - finish recording")
+            }
+        }
     }
     
     // helper method
@@ -109,12 +128,35 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate {
         return documentsDirectory
     }
     
+    func getRecordingURL() -> URL {
+        return getDocumentsDirectory().appendingPathComponent("recording.m4a")
+    }
     
-    func recordTapped() {
+    @IBAction func recordTapped(_ sender: Any) {
         if audioRecorder == nil {
             startRecording()
         } else {
             finishRecording(success: true)
+        }
+        
+//        if !playButton.isHidden {
+//            UIView.animate(withDuration: 0.35) { [unowned self] in
+//                self.playButton.isHidden = true
+//                self.playButton.alpha = 0
+//            }
+//        }
+    }
+
+    @IBAction func playTapped(_ sender: Any) {
+        let audioURL = self.getRecordingURL()
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
+            audioPlayer.play()
+        } catch {
+            let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your whistle; please try re-recording.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
         }
     }
     
