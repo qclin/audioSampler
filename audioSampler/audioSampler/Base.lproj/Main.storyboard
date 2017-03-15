@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="1975.2" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Submit Recording View Controller-->
         <scene sceneID="AL0-dX-ApZ">
             <objects>
-                <viewController id="dvY-za-TgN" sceneMemberID="viewController">
+                <viewController id="dvY-za-TgN" customClass="SubmitRecordingViewController" customModule="audioSampler" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hhT-3g-EXI"/>
                         <viewControllerLayoutGuide type="bottom" id="vGj-6i-UCI"/>

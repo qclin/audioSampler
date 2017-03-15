@@ -22,8 +22,15 @@ class SubmitRecordingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "You're all set !"
+        navigationItem.hidesBackButton = true
+    }
+    
+    override func loadView() {
+        super.loadView()
         view.backgroundColor = UIColor.gray
         loadStackViewWithSpinner()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +46,7 @@ class SubmitRecordingViewController: UIViewController {
     }
     
     func loadStackViewWithSpinner() {
+        print("loadStackViewWithSpinner")
         stackView = UIStackView()
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -69,18 +77,21 @@ class SubmitRecordingViewController: UIViewController {
     }
     
     func doSubmission(){
+        print("000 1")
         let clipRecord = CKRecord(recordType: "Clips")
         clipRecord["length"] = length as CKRecordValue
         clipRecord["genre"] = genre as CKRecordValue
         clipRecord["notes"] = notes as CKRecordValue
         
         let audioURL = RecordClipViewController.getRecordingURL()
+        print("000 1 audioURL \(audioURL)")
         let clipAsset = CKAsset(fileURL: audioURL)
         clipRecord["audio"] = clipAsset
         
-        
+        print("000 2")
         CKContainer.default().publicCloudDatabase.save(clipRecord) { [unowned self] record, error in
             DispatchQueue.main.async {
+                print("000 3")
                 if let error = error {
                     self.status.text = "Error: \(error.localizedDescription)"
                     self.spinner.stopAnimating()

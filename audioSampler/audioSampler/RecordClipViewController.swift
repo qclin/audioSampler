@@ -154,7 +154,7 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
 
     @IBAction func playTapped(_ sender: Any) {
         let audioURL = RecordClipViewController.getRecordingURL()
-        
+        print("RecordClipViewController , playTapped \(audioURL)")
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
             audioPlayer.play()
