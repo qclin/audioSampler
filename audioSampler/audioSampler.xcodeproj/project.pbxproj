@@ -11,6 +11,7 @@
 		9C5BBBABAA273868FFCFFD6E /* Pods_audioSamplerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F482809DBD85616F1EB184EE /* Pods_audioSamplerUITests.framework */; };
 		F0EA968FF77704853A150301 /* Pods_audioSamplerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578EDB17B03AE519DAD238F2 /* Pods_audioSamplerTests.framework */; };
 		F51A83921E83D26D006F87D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F51A83911E83D26D006F87D6 /* GoogleService-Info.plist */; };
+		F528498A1E83DF30008E156E /* storageUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52849891E83DF30008E156E /* storageUpload.swift */; };
 		F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F92E1E78233A003F2772 /* RecordClipViewController.swift */; };
 		F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */; };
 		F543F9351E78588F003F2772 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F543F9341E78588F003F2772 /* CloudKit.framework */; };
@@ -55,6 +56,7 @@
 		D11DCC90D7C1FF4863ABC873 /* Pods-audioSamplerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSamplerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioSamplerUITests/Pods-audioSamplerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		F482809DBD85616F1EB184EE /* Pods_audioSamplerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioSamplerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F51A83911E83D26D006F87D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F52849891E83DF30008E156E /* storageUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = storageUpload.swift; sourceTree = "<group>"; };
 		F543F92E1E78233A003F2772 /* RecordClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordClipViewController.swift; sourceTree = "<group>"; };
 		F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitRecordingViewController.swift; sourceTree = "<group>"; };
 		F543F9321E785734003F2772 /* audioSampler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = audioSampler.entitlements; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F528498B1E83DF36008E156E /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F52849891E83DF30008E156E /* storageUpload.swift */,
+			);
+			name = Firebase;
+			sourceTree = "<group>";
+		};
 		F543F9331E78588F003F2772 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +171,7 @@
 				F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */,
 				F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */,
 				F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */,
+				F528498B1E83DF36008E156E /* Firebase */,
 				F543F92E1E78233A003F2772 /* RecordClipViewController.swift */,
 				F5AE2E821E6D6DC50072FC23 /* Assets.xcassets */,
 				F5AE2E841E6D6DC50072FC23 /* LaunchScreen.storyboard */,
@@ -504,6 +515,7 @@
 				F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */,
 				F5AE2E811E6D6DC50072FC23 /* audioSampler.xcdatamodeld in Sources */,
 				F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */,
+				F528498A1E83DF30008E156E /* storageUpload.swift in Sources */,
 				F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
