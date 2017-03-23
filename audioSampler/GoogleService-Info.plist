@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>651003505598-ri39tq86vbsom8hli7vlgafh0436jetr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.651003505598-ri39tq86vbsom8hli7vlgafh0436jetr</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBHvPHkdNHLuSnPLR4tXK3N5LLX1JXxiT4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>651003505598</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>sample.audioSampler</string>
+	<key>PROJECT_ID</key>
+	<string>audiosampler-2a090</string>
+	<key>STORAGE_BUCKET</key>
+	<string>audiosampler-2a090.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:651003505598:ios:25062ba0629fefd6</string>
+	<key>DATABASE_URL</key>
+	<string>https://audiosampler-2a090.firebaseio.com</string>
+</dict>
+</plist>
