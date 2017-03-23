@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3BB698206553C9507DB200E9 /* Pods_audioSampler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9E76CB6E7201EE9F9FDA29D /* Pods_audioSampler.framework */; };
+		9C5BBBABAA273868FFCFFD6E /* Pods_audioSamplerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F482809DBD85616F1EB184EE /* Pods_audioSamplerUITests.framework */; };
+		F0EA968FF77704853A150301 /* Pods_audioSamplerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 578EDB17B03AE519DAD238F2 /* Pods_audioSamplerTests.framework */; };
+		F51A83921E83D26D006F87D6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F51A83911E83D26D006F87D6 /* GoogleService-Info.plist */; };
 		F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F92E1E78233A003F2772 /* RecordClipViewController.swift */; };
 		F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */; };
 		F543F9351E78588F003F2772 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F543F9341E78588F003F2772 /* CloudKit.framework */; };
@@ -41,6 +45,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D1A386D6621F917E7939C58 /* Pods-audioSampler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSampler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioSampler/Pods-audioSampler.debug.xcconfig"; sourceTree = "<group>"; };
+		4F2E0C6A71EF8996A01F4231 /* Pods-audioSampler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSampler.release.xcconfig"; path = "Pods/Target Support Files/Pods-audioSampler/Pods-audioSampler.release.xcconfig"; sourceTree = "<group>"; };
+		578EDB17B03AE519DAD238F2 /* Pods_audioSamplerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioSamplerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F24866DB86372BF850C618B /* Pods-audioSamplerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSamplerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioSamplerTests/Pods-audioSamplerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		778A391DF52188FC003C1179 /* Pods-audioSamplerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSamplerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-audioSamplerTests/Pods-audioSamplerTests.release.xcconfig"; sourceTree = "<group>"; };
+		A69E719F5F9ACCF194609019 /* Pods-audioSamplerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSamplerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-audioSamplerUITests/Pods-audioSamplerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C9E76CB6E7201EE9F9FDA29D /* Pods_audioSampler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioSampler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11DCC90D7C1FF4863ABC873 /* Pods-audioSamplerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-audioSamplerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-audioSamplerUITests/Pods-audioSamplerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F482809DBD85616F1EB184EE /* Pods_audioSamplerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_audioSamplerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F51A83911E83D26D006F87D6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F543F92E1E78233A003F2772 /* RecordClipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordClipViewController.swift; sourceTree = "<group>"; };
 		F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitRecordingViewController.swift; sourceTree = "<group>"; };
 		F543F9321E785734003F2772 /* audioSampler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = audioSampler.entitlements; sourceTree = "<group>"; };
@@ -68,6 +82,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F543F9351E78588F003F2772 /* CloudKit.framework in Frameworks */,
+				3BB698206553C9507DB200E9 /* Pods_audioSampler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EA968FF77704853A150301 /* Pods_audioSamplerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,16 +98,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C5BBBABAA273868FFCFFD6E /* Pods_audioSamplerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		260640E9F022BAD5FE963710 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D1A386D6621F917E7939C58 /* Pods-audioSampler.debug.xcconfig */,
+				4F2E0C6A71EF8996A01F4231 /* Pods-audioSampler.release.xcconfig */,
+				6F24866DB86372BF850C618B /* Pods-audioSamplerTests.debug.xcconfig */,
+				778A391DF52188FC003C1179 /* Pods-audioSamplerTests.release.xcconfig */,
+				D11DCC90D7C1FF4863ABC873 /* Pods-audioSamplerUITests.debug.xcconfig */,
+				A69E719F5F9ACCF194609019 /* Pods-audioSamplerUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F543F9331E78588F003F2772 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F543F9341E78588F003F2772 /* CloudKit.framework */,
+				C9E76CB6E7201EE9F9FDA29D /* Pods_audioSampler.framework */,
+				578EDB17B03AE519DAD238F2 /* Pods_audioSamplerTests.framework */,
+				F482809DBD85616F1EB184EE /* Pods_audioSamplerUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,6 +137,7 @@
 				F5AE2E9A1E6D6DC50072FC23 /* audioSamplerUITests */,
 				F5AE2E761E6D6DC50072FC23 /* Products */,
 				F543F9331E78588F003F2772 /* Frameworks */,
+				260640E9F022BAD5FE963710 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,6 +154,7 @@
 		F5AE2E771E6D6DC50072FC23 /* audioSampler */ = {
 			isa = PBXGroup;
 			children = (
+				F51A83911E83D26D006F87D6 /* GoogleService-Info.plist */,
 				F543F9321E785734003F2772 /* audioSampler.entitlements */,
 				F5AE2EA91E6D702D0072FC23 /* Resources */,
 				F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */,
@@ -176,9 +211,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5AE2EA01E6D6DC50072FC23 /* Build configuration list for PBXNativeTarget "audioSampler" */;
 			buildPhases = (
+				A53714ABA298EAE70E1B2138 /* [CP] Check Pods Manifest.lock */,
 				F5AE2E711E6D6DC40072FC23 /* Sources */,
 				F5AE2E721E6D6DC40072FC23 /* Frameworks */,
 				F5AE2E731E6D6DC40072FC23 /* Resources */,
+				8A03124933D997632D12ED22 /* [CP] Embed Pods Frameworks */,
+				0CAE82863B560802E0A94E82 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,9 +231,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5AE2EA31E6D6DC50072FC23 /* Build configuration list for PBXNativeTarget "audioSamplerTests" */;
 			buildPhases = (
+				29EE07ADB4F4AEA552816B63 /* [CP] Check Pods Manifest.lock */,
 				F5AE2E881E6D6DC50072FC23 /* Sources */,
 				F5AE2E891E6D6DC50072FC23 /* Frameworks */,
 				F5AE2E8A1E6D6DC50072FC23 /* Resources */,
+				391E3D4EA983FA406AC051AA /* [CP] Embed Pods Frameworks */,
+				5E151C8A8FFEE9281AE53CF9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,9 +252,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5AE2EA61E6D6DC50072FC23 /* Build configuration list for PBXNativeTarget "audioSamplerUITests" */;
 			buildPhases = (
+				44AEF619280B492DA5215AFB /* [CP] Check Pods Manifest.lock */,
 				F5AE2E931E6D6DC50072FC23 /* Sources */,
 				F5AE2E941E6D6DC50072FC23 /* Frameworks */,
 				F5AE2E951E6D6DC50072FC23 /* Resources */,
+				EFDAB60D54E164BC1BA5D612 /* [CP] Embed Pods Frameworks */,
+				57B751AA9866D74F52911866 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -289,6 +333,7 @@
 			files = (
 				F5AE2E861E6D6DC50072FC23 /* LaunchScreen.storyboard in Resources */,
 				F5AE2EAC1E6D715D0072FC23 /* example.aif in Resources */,
+				F51A83921E83D26D006F87D6 /* GoogleService-Info.plist in Resources */,
 				F5AE2E831E6D6DC50072FC23 /* Assets.xcassets in Resources */,
 				F5AE2E7E1E6D6DC50072FC23 /* Main.storyboard in Resources */,
 			);
@@ -311,6 +356,144 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0CAE82863B560802E0A94E82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioSampler/Pods-audioSampler-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		29EE07ADB4F4AEA552816B63 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		391E3D4EA983FA406AC051AA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioSamplerTests/Pods-audioSamplerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44AEF619280B492DA5215AFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		57B751AA9866D74F52911866 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioSamplerUITests/Pods-audioSamplerUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E151C8A8FFEE9281AE53CF9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioSamplerTests/Pods-audioSamplerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8A03124933D997632D12ED22 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioSampler/Pods-audioSampler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A53714ABA298EAE70E1B2138 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EFDAB60D54E164BC1BA5D612 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-audioSamplerUITests/Pods-audioSamplerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F5AE2E711E6D6DC40072FC23 /* Sources */ = {
@@ -469,6 +652,7 @@
 		};
 		F5AE2EA11E6D6DC50072FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D1A386D6621F917E7939C58 /* Pods-audioSampler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = audioSampler/audioSampler.entitlements;
@@ -483,6 +667,7 @@
 		};
 		F5AE2EA21E6D6DC50072FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F2E0C6A71EF8996A01F4231 /* Pods-audioSampler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = audioSampler/audioSampler.entitlements;
@@ -497,6 +682,7 @@
 		};
 		F5AE2EA41E6D6DC50072FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F24866DB86372BF850C618B /* Pods-audioSamplerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +698,7 @@
 		};
 		F5AE2EA51E6D6DC50072FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 778A391DF52188FC003C1179 /* Pods-audioSamplerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -527,6 +714,7 @@
 		};
 		F5AE2EA71E6D6DC50072FC23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D11DCC90D7C1FF4863ABC873 /* Pods-audioSamplerUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 5H99ZYMEE4;
@@ -541,6 +729,7 @@
 		};
 		F5AE2EA81E6D6DC50072FC23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A69E719F5F9ACCF194609019 /* Pods-audioSamplerUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = 5H99ZYMEE4;
