@@ -8,6 +8,8 @@
 
 import UIKit
 import CloudKit
+import AVFoundation
+
 
 class SubmitRecordingViewController: UIViewController {
     var length: String!
@@ -79,11 +81,26 @@ class SubmitRecordingViewController: UIViewController {
     func doSubmission(){
         print("000 1")
         let clipRecord = CKRecord(recordType: "Clips")
-        clipRecord["length"] = length as CKRecordValue
-        clipRecord["genre"] = genre as CKRecordValue
-        clipRecord["notes"] = notes as CKRecordValue
+
         
         let audioURL = RecordClipViewController.getRecordingURL()
+        let path:String = audioURL.path
+        
+        do{
+            let attributes = try FileManager.default.attributesOfItem(atPath: path)
+            let fileSize = attributes[FileAttributeKey.size] as! UInt64
+            let creationDate = attributes[FileAttributeKey.creationDate] as! NSDate
+            print("attributes of fileSize:  \(fileSize), creationDate: \(creationDate)")
+            let asset = AVAsset(url: audioURL)
+            let duration = CMTimeGetSeconds(asset.duration)
+            print("duration in secs --- : \(duration)")
+        }catch{
+            
+        }
+        
+        // clipRecord["length"] = length as CKRecordValue
+        // clipRecord["genre"] = genre as CKRecordValue
+        // clipRecord["notes"] = notes as CKRecordValue
         print("000 1 audioURL \(audioURL)")
         let clipAsset = CKAsset(fileURL: audioURL)
         clipRecord["audio"] = clipAsset
@@ -108,10 +125,14 @@ class SubmitRecordingViewController: UIViewController {
         }
     }
     
+    
+    
+    
     func doneTapped() {
         // once fired dimisses current view
         _ = navigationController?.popToRootViewController(animated: true)
     }
+    
     
     
     /*

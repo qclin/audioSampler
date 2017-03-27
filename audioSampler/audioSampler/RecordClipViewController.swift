@@ -135,7 +135,6 @@ class RecordClipViewController: UIViewController, AVAudioRecorderDelegate, AVAud
     class func getRecordingURL() -> URL {
         return getDocumentsDirectory().appendingPathComponent("whistle.m4a")
     }
-
     
     @IBAction func recordTapped(_ sender: Any) {
         if audioRecorder == nil {
