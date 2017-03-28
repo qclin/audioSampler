@@ -12,10 +12,10 @@ import AVFoundation
 
 
 class SubmitRecordingViewController: UIViewController {
-    var length: String!
     var genre: String!
     var notes: String!
-    
+    var duration:Float64!
+
     
     var stackView: UIStackView!
     var status: UILabel!
@@ -79,10 +79,7 @@ class SubmitRecordingViewController: UIViewController {
     }
     
     func doSubmission(){
-        print("000 1")
         let clipRecord = CKRecord(recordType: "Clips")
-
-        
         let audioURL = RecordClipViewController.getRecordingURL()
         let path:String = audioURL.path
         
@@ -92,16 +89,15 @@ class SubmitRecordingViewController: UIViewController {
             let creationDate = attributes[FileAttributeKey.creationDate] as! NSDate
             print("attributes of fileSize:  \(fileSize), creationDate: \(creationDate)")
             let asset = AVAsset(url: audioURL)
-            let duration = CMTimeGetSeconds(asset.duration)
+            duration = CMTimeGetSeconds(asset.duration)
             print("duration in secs --- : \(duration)")
         }catch{
             
         }
         
-        // clipRecord["length"] = length as CKRecordValue
+        clipRecord["duration"] = duration as CKRecordValue
         // clipRecord["genre"] = genre as CKRecordValue
         // clipRecord["notes"] = notes as CKRecordValue
-        print("000 1 audioURL \(audioURL)")
         let clipAsset = CKAsset(fileURL: audioURL)
         clipRecord["audio"] = clipAsset
         
