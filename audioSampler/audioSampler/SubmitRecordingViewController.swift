@@ -12,8 +12,8 @@ import AVFoundation
 
 
 class SubmitRecordingViewController: UIViewController {
-    var genre: String!
-    var notes: String!
+    var type: String!
+    var note: String!
     var duration:Float64!
 
     
@@ -96,8 +96,8 @@ class SubmitRecordingViewController: UIViewController {
         }
         
         clipRecord["duration"] = duration as CKRecordValue
-        // clipRecord["genre"] = genre as CKRecordValue
-        // clipRecord["notes"] = notes as CKRecordValue
+        clipRecord["type"] = "satistfied" as CKRecordValue
+        clipRecord["note"] = "this is a test" as CKRecordValue
         let clipAsset = CKAsset(fileURL: audioURL)
         clipRecord["audio"] = clipAsset
         

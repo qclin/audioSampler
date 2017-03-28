@@ -13,7 +13,6 @@ import AVFoundation
 import AudioToolbox
 import Speech
 
-
 class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextFieldDelegate{
     let talker = AVSpeechSynthesizer()
     let engine = AVAudioEngine()

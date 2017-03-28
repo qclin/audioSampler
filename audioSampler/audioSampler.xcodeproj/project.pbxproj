@@ -15,6 +15,8 @@
 		F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F92E1E78233A003F2772 /* RecordClipViewController.swift */; };
 		F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */; };
 		F543F9351E78588F003F2772 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F543F9341E78588F003F2772 /* CloudKit.framework */; };
+		F550CB901E8A66C100D51C69 /* AudioClipsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550CB8F1E8A66C100D51C69 /* AudioClipsTableViewController.swift */; };
+		F550CB921E8A675100D51C69 /* AudioClip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F550CB911E8A675100D51C69 /* AudioClip.swift */; };
 		F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */; };
 		F5AE2E7B1E6D6DC50072FC23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */; };
 		F5AE2E7E1E6D6DC50072FC23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitRecordingViewController.swift; sourceTree = "<group>"; };
 		F543F9321E785734003F2772 /* audioSampler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = audioSampler.entitlements; sourceTree = "<group>"; };
 		F543F9341E78588F003F2772 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		F550CB8F1E8A66C100D51C69 /* AudioClipsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClipsTableViewController.swift; sourceTree = "<group>"; };
+		F550CB911E8A675100D51C69 /* AudioClip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioClip.swift; sourceTree = "<group>"; };
 		F5AE2E751E6D6DC50072FC23 /* audioSampler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioSampler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				F5AE2E781E6D6DC50072FC23 /* AppDelegate.swift */,
 				F5AE2E7A1E6D6DC50072FC23 /* ViewController.swift */,
 				F5AE2E7C1E6D6DC50072FC23 /* Main.storyboard */,
+				F550CB8F1E8A66C100D51C69 /* AudioClipsTableViewController.swift */,
+				F550CB911E8A675100D51C69 /* AudioClip.swift */,
 				F543F9301E785390003F2772 /* SubmitRecordingViewController.swift */,
 				F528498B1E83DF36008E156E /* Firebase */,
 				F543F92E1E78233A003F2772 /* RecordClipViewController.swift */,
@@ -515,8 +521,10 @@
 				F5AE2E791E6D6DC50072FC23 /* AppDelegate.swift in Sources */,
 				F5AE2E811E6D6DC50072FC23 /* audioSampler.xcdatamodeld in Sources */,
 				F543F9311E785390003F2772 /* SubmitRecordingViewController.swift in Sources */,
+				F550CB921E8A675100D51C69 /* AudioClip.swift in Sources */,
 				F528498A1E83DF30008E156E /* storageUpload.swift in Sources */,
 				F543F92F1E78233A003F2772 /* RecordClipViewController.swift in Sources */,
+				F550CB901E8A66C100D51C69 /* AudioClipsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
