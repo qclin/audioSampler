@@ -1,20 +1,13 @@
 audioSampler
 
-iOS 10 learnings for Ventilation App
+# iOS Audio Libraries
 
-#Chapters Source:
-
-## Deep Dive with Programming iOS10 Neuburg
-
-14. Audio
     - Audio Session: Activation, Ducking, Interruption
     - AVAudioEngine
     - Text to Speech
     - Speech To Text
     - Locale determine Speech
+    - Reading Out Text with the default Siri Alex Voice
 
-
-## iOS 10 Swift Programming Cookbook
-
-16. Multimedia
-    - Reading Out Text with the default Siri Alex Voice 
+# Firebase
+    - Cloud functions hook to translation api 
