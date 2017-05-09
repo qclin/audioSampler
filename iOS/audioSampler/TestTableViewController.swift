@@ -1,14 +1,14 @@
 //
-//  ResultsViewController.swift
+//  TestTableViewController.swift
 //  audioSampler
 //
-//  Created by Qiao Lin on 3/28/17.
+//  Created by Qiao Lin on 4/25/17.
 //  Copyright © 2017 Qiao Lin. All rights reserved.
 //
 
 import UIKit
 
-class ResultsViewController: UITableViewController {
+class TestTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,5 +91,9 @@ class ResultsViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 
 }

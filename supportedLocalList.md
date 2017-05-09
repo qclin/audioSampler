@@ -1,1 +1,7 @@
 [th-TH (fixed), ca-ES (fixed), fr-BE (fixed), de-CH (fixed), sk-SK (fixed), en-ZA (fixed), es-CL (fixed), zh-CN (fixed), zh-TW (fixed), da-DK (fixed), el-GR (fixed), he-IL (fixed), pt-BR (fixed), en-AE (fixed), pt-PT (fixed), fr-CH (fixed), ro-RO (fixed), vi-VN (fixed), en-SA (fixed), pl-PL (fixed), es-US (fixed), en-SG (fixed), tr-TR (fixed), hr-HR (fixed), ko-KR (fixed), uk-UA (fixed), it-CH (fixed), ar-SA (fixed), id-ID (fixed), en-IN (fixed), es-ES (fixed), de-AT (fixed), en-IE (fixed), cs-CZ (fixed), es-CO (fixed), zh-HK (fixed), sv-SE (fixed), en-PH (fixed), en-ID (fixed), en-CA (fixed), nl-NL (fixed), yue-CN (fixed), en-NZ (fixed), en-GB (fixed), ja-JP (fixed), it-IT (fixed), ru-RU (fixed), en-US (fixed), ms-MY (fixed), es-MX (fixed), hu-HU (fixed), fr-CA (fixed), de-DE (fixed), fr-FR (fixed), fi-FI (fixed), nb-NO (fixed), nl-BE (fixed), en-AU (fixed)]
+
+
+http://www.loc.gov/standards/iso639-2/php/English_list.php
+
+https://developer.apple.com/library/content/documentation/MacOSX/Conceptual/BPInternational/LanguageandLocaleIDs/LanguageandLocaleIDs.html
+https://developer.apple.com/reference/speech/sfspeechrecognizer 

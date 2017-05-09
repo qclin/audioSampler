@@ -7,32 +7,78 @@
 //
 
 import UIKit
-
-
 import AVFoundation
 import AudioToolbox
 import Speech
+import FirebaseDatabase
 
-class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextFieldDelegate{
+class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate {
+
     let talker = AVSpeechSynthesizer()
     let engine = AVAudioEngine()
     let recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
     var language: String?
+    var textReady: Bool = false
+    @IBOutlet weak var speedControl: UISegmentedControl!
+    
+    var utteranceSpeed = 1.0
+    
+    @IBAction func speedControl(_ sender: UISegmentedControl) {
+        
+        switch speedControl.selectedSegmentIndex{
+            case 0:
+                utteranceSpeed = 0.8
+            case 2:
+                utteranceSpeed = 1.2
+            default:
+                utteranceSpeed = 1.0
+                break;
+        }
+    }
+    
     @IBOutlet weak var textfield: UITextField!
-    @IBOutlet weak var textView: UITextView!
-    
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var transcribeText: UILabel!
+    @IBOutlet weak var translationTable: UITableView!
     
+    var targets = ["en", "ar", "es", "de", "fr", "ja", "zh-TW"]
+    var languageKey = ""
+    var currentKey: String = ""
+    var translations: Array<AnyObject>= []
+    var ref: FIRDatabaseReference!
+    var messageRef: FIRDatabaseReference!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.talker.delegate = self
         self.textfield.delegate = self
 //        playSystemSound()
 //        utterSomething("Good morning")
-//        requestSpeechAuthoriztion()
+        requestSpeechAuthoriztion() // re-enable when clear cache
         requestMicrophoneAuthorization()
         transcribeText.text = ""
         
+        // initialize Firebase DB Instance
+        ref = FIRDatabase.database().reference()
+        messageRef = ref.child("messages")
+        translationTable.dataSource = self
+        translationTable.delegate = self
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        translations.removeAll()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        messageRef.removeAllObservers()
+        
+        if let refHandle = refHandle {
+            messageRef.removeObserver(withHandle: refHandle)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -41,26 +87,25 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextField
     }
     
     //ask alex to read
-    @IBAction func readBtnPressed(_ sender: Any) {
+    func readTranslation(target: String) {
 //        guard let voice = AVSpeechSynthesisVoice(identifier:AVSpeechSynthesisVoiceIdentifierAlex) else{
 //            print("Alex is not available")
 //            return
 //        }
         
-        let detectedLang = (textfield.textInputMode?.primaryLanguage)!
-        guard let voice = AVSpeechSynthesisVoice(language: detectedLang) else{
-            print("Voice is not available in this locale \(detectedLang))")
+//        let detectedLang = (textfield.textInputMode?.primaryLanguage)!
+//        guard let voice = AVSpeechSynthesisVoice(language: detectedLang) else{
+//            print("Voice is not available in this locale \(detectedLang))")
+//            return
+//        }
+        
+        guard let voice = AVSpeechSynthesisVoice(language: target) else{
+            print("voice is not available in this locale \(target))")
             return
         }
-        print("language = \(detectedLang)")
-        print("id = \(voice.identifier)")
-        print("quality = \(voice.quality)")
-        print("name = \(voice.name)")
         
-        let toSay = AVSpeechUtterance(string: textView.text)
+        let toSay = AVSpeechUtterance(string: "passe variable here")
         toSay.voice = voice
-        
-        print("")
         let alex = AVSpeechSynthesizer()
         alex.delegate = self
         alex.speak(toSay)
@@ -79,7 +124,9 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextField
                 let trans = result.bestTranscription
                 let s = trans.formattedString
                 print(s)
+                self.textReady = true
                 if result.isFinal {
+                    self.postToFirebaseForTranslation(inputText: s)
                     print("finished!")
                 }
             }else{
@@ -110,22 +157,19 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextField
                 } else{
                     print("not granted")
                 }
-            
-            
             })
         }
     }
     
-    @IBOutlet weak var transcribeText: UILabel!
+    
     private func transcibeLiveSpeech(){
         // can substitute locale later to whatever the user's keyboard is
         language = self.getCurrentLanguage()
-        
         guard let rec = SFSpeechRecognizer(locale: Locale(identifier: language!)) else {
             return
         }
         
-        self.recognitionRequest.shouldReportPartialResults = true // to return befure audio recording is finish
+        self.recognitionRequest.shouldReportPartialResults = true // to return before audio recording is finish
         
         let input = self.engine.inputNode!
         input.installTap(onBus: 0, bufferSize: 4096, format: input.outputFormat(forBus: 0)){ buffer, time in
@@ -133,23 +177,60 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextField
         }
         self.engine.prepare()
         try! self.engine.start()
-        // NB: provide the user with feedack here ! 
-        
+        // NB: provide the user with feedack here !
         rec.recognitionTask(with: self.recognitionRequest){ result, err in
             if let result = result {
                 let trans = result.bestTranscription
                 let s = trans.formattedString
-                print(s)
                 self.transcribeText.text = s
                 self.transcribeText.sizeToFit()
+                // text will render while user talks
                 if result.isFinal {
-                    print("finished!")
+                    self.postToFirebaseForTranslation(inputText: s)
                 }
             }else{
                 print(err!)
             }
         }
     }
+
+    private func postToFirebaseForTranslation(inputText text: String){
+        language = self.getCurrentLanguage()
+        
+        // custom string manipulation for Chinese zh-tw or zh-cn
+        if language?.range(of: "zh") == nil{
+            language = language?.substring(to: (language?.index((language?.startIndex)!, offsetBy: 2))!)
+        }
+        guard let languageID = language else{
+            return
+        }
+        currentKey = ref.child("messages/\(languageID)").childByAutoId().key
+        
+        let post = ["text": text,
+                    "translated": false] as [String : Any]
+        
+        let childUpdates = ["messages/\(languageID)/\(currentKey)": post]
+        ref.updateChildValues(childUpdates)
+        
+        self.startObserver()
+    }
+    
+    var refHandle: FIRDatabaseHandle?
+
+    func startObserver(){
+        refHandle = messageRef.observe(FIRDataEventType.value, with: { (snapshot) in
+            self.translations.removeAll()
+            let messageDict = snapshot.value as? [String : AnyObject] ?? [:]
+            if self.currentKey != "" {
+                for target in self.targets{
+                    let translationDict = messageDict[target]![self.currentKey]
+                    self.translations.append(translationDict as AnyObject)
+                }
+            }
+            self.translationTable.reloadData()
+        })
+    }
+    
     
     func getCurrentLanguage() -> String {
         
@@ -187,11 +268,16 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextField
             }
         }
     }
-    private func utterSomething(_ text: String){
+    private func utterSomething(_ text: String, targetIndex: Int){
         let utter = AVSpeechUtterance(string: text)
-        let v = AVSpeechSynthesisVoice(language: "en-US")
-        utter.voice = v
-        self.talker.speak(utter)
+//        utter.pitchMultiplier
+        utter.rate = AVSpeechUtteranceDefaultSpeechRate * Float(utteranceSpeed)
+        let targetVoice = self.targets[targetIndex]
+        
+        let voice = AVSpeechSynthesisVoice(language: targetVoice)
+        utter.voice = voice
+        
+        self.talker.speak(utter) // AVSpeechSynthesizer()
     }
     
     private func playSystemSound(){
@@ -223,6 +309,37 @@ class ViewController: UIViewController, AVSpeechSynthesizerDelegate, UITextField
         // Dispose of any resources that can be recreated.
     }
 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int)  -> Int {
+        return self.translations.count
+    }
+    
+   internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        let cell = self.translationTable.dequeueReusableCell(withIdentifier: "mycell", for: indexPath)
+
+        let translationDict = self.translations[indexPath.row]
+        print(" ########-------  \(translationDict)")
+        if translationDict["text"] != nil{
+            cell.textLabel?.text = translationDict["text"] as? String
+            cell.tag = indexPath.row
+        }
+    
+    
+    //        cell.detailTextLabel?.text = translationDict?.translated as String
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("tap tap tap ")
+        // cell selected code here
+        let translationDict = self.translations[indexPath.row]
+        print("yeahhhhhh \(translationDict)")
+        self.utterSomething(translationDict["text"] as! String, targetIndex: indexPath.row)
+    }
 
 }
+
 
